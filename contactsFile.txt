@@ -1,0 +1,3 @@
+Vasya[email:vasya@gg.com]
+Petya[phone:+380987654321]
+Masha[phone:+380978765432]
