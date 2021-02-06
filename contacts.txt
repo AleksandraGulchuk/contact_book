@@ -1,0 +1,3 @@
+1.Vas[email:vas@i.ua]
+2.Vanya[phone:+380987654321]
+3.Vera[phone:+380971234567]

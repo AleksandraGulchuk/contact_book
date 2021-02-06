@@ -4,7 +4,7 @@ package com.hillel.contact_book.menu.actions;
 import com.hillel.contact_book.contacts.Contact;
 import com.hillel.contact_book.contacts.ContactWorker;
 import com.hillel.contact_book.contacts.Type;
-import com.hillel.contact_book.dto.ContactResponse;
+import com.hillel.contact_book.dto.contact.ContactResponse;
 import com.hillel.contact_book.menu.MenuAction;
 import com.hillel.contact_book.service.ContactsService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +17,7 @@ public class AddContactMenuAction implements MenuAction {
 
     private final ContactsService contactsService;
     private final BufferedReader reader;
+
 
     @Override
     public void doAction() {

@@ -1,6 +1,6 @@
 package com.hillel.contact_book.menu.actions;
 
-import com.hillel.contact_book.dto.SingInResponse;
+import com.hillel.contact_book.dto.user.SingInResponse;
 import com.hillel.contact_book.menu.MenuAction;
 import com.hillel.contact_book.service.WithAuthorizationContactsService;
 import lombok.RequiredArgsConstructor;

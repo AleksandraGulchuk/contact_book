@@ -27,7 +27,7 @@ public class Menu {
         }
     }
 
-    private List<MenuAction>  displayActionsName() {
+    private List<MenuAction> displayActionsName() {
         List<MenuAction> actionsToDisplay = actions.stream()
                 .filter(MenuAction::isVisible)
                 .collect(Collectors.toList());

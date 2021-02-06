@@ -9,22 +9,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Contact {
+    private Integer id;
     private String name;
-    private String type;
-    private Type typeType;
+    private Type contactType;
     private String value;
-    private int id;
 
-    public Contact(String name, Type typeType, String value) {
+    public Contact(String name, Type contactType, String value) {
         this.name = name;
-        this.typeType = typeType;
+        this.contactType = contactType;
         this.value = value;
     }
 
     @Override
     public String toString() {
-        return "type: " + (type != null ? type : typeType.getValue()) +
+        return "type: " + contactType.getValue() +
                 ", name: " + name +
-                ", contact: " + value;
+                ", contact: " + value +
+                ", id: " + id;
     }
+
 }

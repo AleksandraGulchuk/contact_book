@@ -1,4 +1,4 @@
-package com.hillel.contact_book.dto;
+package com.hillel.contact_book.dto.contact;
 
 import com.hillel.contact_book.contacts.Contact;
 import lombok.AllArgsConstructor;
@@ -12,9 +12,19 @@ import java.util.List;
 @NoArgsConstructor
 public class ContactResponse {
 
-    private List<Contact> contacts;
+    private List<ContactForResponse> contacts;
     private String status;
     private String error;
     private String message;
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class ContactForResponse{
+        private String value;
+        private String name;
+        private String type;
+        private Integer id;
+    }
 
 }

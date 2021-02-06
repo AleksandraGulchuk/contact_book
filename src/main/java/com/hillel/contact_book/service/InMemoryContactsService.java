@@ -3,15 +3,22 @@ package com.hillel.contact_book.service;
 
 import com.hillel.contact_book.contacts.Contact;
 import com.hillel.contact_book.contacts.ContactWorker;
-import com.hillel.contact_book.dto.ContactResponse;
+import com.hillel.contact_book.dto.contact.ContactResponse;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class InMemoryContactsService implements ContactsService {
 
     private final List<Contact> contactsList = new ArrayList<>();
+
+    private int newId() {
+        return contactsList.stream().map(Contact::getId)
+                .max(Comparator.comparingInt(a -> a))
+                .map(id -> id + 1).orElse(1);
+    }
 
     @Override
     public List<Contact> getAllContacts() {
@@ -34,6 +41,7 @@ public class InMemoryContactsService implements ContactsService {
             contactResponse.setStatus("error");
             contactResponse.setMessage(contact + " уже существует в телефонной книге!");
         } else {
+            contact.setId(newId());
             contactsList.add(contact);
             contactResponse.setStatus("ok");
         }

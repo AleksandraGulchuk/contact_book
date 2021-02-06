@@ -2,7 +2,7 @@ package com.hillel.contact_book.service;
 
 
 import com.hillel.contact_book.contacts.Contact;
-import com.hillel.contact_book.dto.ContactResponse;
+import com.hillel.contact_book.dto.contact.ContactResponse;
 
 import java.util.List;
 

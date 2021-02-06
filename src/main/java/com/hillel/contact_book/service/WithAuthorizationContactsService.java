@@ -1,7 +1,7 @@
 package com.hillel.contact_book.service;
 
-import com.hillel.contact_book.dto.CheckInResponse;
-import com.hillel.contact_book.dto.SingInResponse;
+import com.hillel.contact_book.dto.user.CheckInResponse;
+import com.hillel.contact_book.dto.user.SingInResponse;
 
 public interface WithAuthorizationContactsService {
 

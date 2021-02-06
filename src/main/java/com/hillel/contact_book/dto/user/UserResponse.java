@@ -1,4 +1,4 @@
-package com.hillel.contact_book.dto;
+package com.hillel.contact_book.dto.user;
 
 import com.hillel.contact_book.users.User;
 import lombok.Data;

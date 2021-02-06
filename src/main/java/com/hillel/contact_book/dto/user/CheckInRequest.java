@@ -1,4 +1,4 @@
-package com.hillel.contact_book.dto;
+package com.hillel.contact_book.dto.user;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;

@@ -3,16 +3,19 @@ package com.hillel.contact_book.service;
 
 import com.hillel.contact_book.contacts.Contact;
 import com.hillel.contact_book.contacts.ContactWorker;
-import com.hillel.contact_book.dto.ContactResponse;
+import com.hillel.contact_book.dto.contact.ContactResponse;
+import lombok.RequiredArgsConstructor;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 public class InFileContactsService implements ContactsService {
 
-    private final File contactsFile = new File("contactsFile.txt");
+    private final File contactsFile;
 
 
     @Override
@@ -23,7 +26,7 @@ public class InFileContactsService implements ContactsService {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(contactsFile))) {
             String currentLine;
             while ((currentLine = bufferedReader.readLine()) != null) {
-                Contact contact = contactWorker.getContactFromLine(currentLine);
+                Contact contact = contactWorker.getContactFromFileLine(currentLine);
                 if (contact != null) contactsList.add(contact);
             }
         } catch (IOException e) {
@@ -43,8 +46,9 @@ public class InFileContactsService implements ContactsService {
                     System.out.println(removedContact + " удален из телефонной книги.");
                 }
                 for (Contact contact : contactsList) {
-                    bufferedWriter.write(contact.getName()
-                            + "[" + contact.getTypeType().getValue()
+                    bufferedWriter.write(contact.getId() + "."
+                            + contact.getName()
+                            + "[" + contact.getContactType().getValue()
                             + ":" + contact.getValue() + "]" + "\n");
                 }
             } catch (IOException e) {
@@ -62,8 +66,13 @@ public class InFileContactsService implements ContactsService {
                 contactResponse.setStatus("error");
                 contactResponse.setMessage(contact + " уже существует в телефонной книге!");
             } else {
-                bufferedWriter.write(contact.getName()
-                        + "[" + contact.getTypeType().getValue()
+                int id = contactsList.stream().map(Contact::getId)
+                        .max(Comparator.comparingInt(a -> a))
+                        .map(num -> num + 1).orElse(1);
+                contact.setId(id);
+                bufferedWriter.write(contact.getId() + "."
+                        + contact.getName()
+                        + "[" + contact.getContactType().getValue()
                         + ":" + contact.getValue() + "]" + "\n");
                 contactResponse.setStatus("ok");
             }
