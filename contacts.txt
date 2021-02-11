@@ -1,3 +1,5 @@
-1.Vas[email:vas@i.ua]
 2.Vanya[phone:+380987654321]
 3.Vera[phone:+380971234567]
+4.Sem[email:sem@sem.ua]
+5.Vasya[phone:+380987654321]
+6.Vas[email:vas@com.ua]
