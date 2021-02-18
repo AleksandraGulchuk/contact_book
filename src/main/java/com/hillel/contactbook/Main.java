@@ -1,16 +1,13 @@
 package com.hillel.contactbook;
 
 import com.hillel.contactbook.menu.Menu;
-import com.hillel.contactbook.config.MenuActionsCollector;
-
-import java.io.*;
+import com.hillel.contactbook.factory.menu.MenuFactory;
 
 
 public class Main {
     public static void main(String[] args) {
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        Menu menu = new Menu(MenuActionsCollector.collectMenuActions(reader), reader);
+        Menu menu = new MenuFactory().buildMenu();
         menu.run();
 
     }

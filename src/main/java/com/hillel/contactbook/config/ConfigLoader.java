@@ -12,6 +12,15 @@ import java.util.Properties;
 
 public class ConfigLoader {
 
+    public Object createObject(Class clazz) {
+        try {
+            Constructor constructor = clazz.getConstructor();
+            return constructor.newInstance();
+        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException("Need default constructor", e);
+        }
+    }
+
     public <T> T getSystemProps(Class<T> clazz) {
         Object object = createObject(clazz);
         extractedProps(object, System.getProperties());
@@ -25,6 +34,16 @@ public class ConfigLoader {
             Object object = createObject(clazz);
             extractedProps(object, properties);
             return (T) object;
+        } catch (IOException e) {
+            throw new RuntimeException("Fail load properties file " + filePropName, e);
+        }
+    }
+
+    public void setFileProps(Object object, String filePropName) {
+        try (InputStream inputStream = new FileInputStream(filePropName)) {
+            Properties properties = new Properties();
+            properties.load(inputStream);
+            extractedProps(object, properties);
         } catch (IOException e) {
             throw new RuntimeException("Fail load properties file " + filePropName, e);
         }
@@ -47,12 +66,4 @@ public class ConfigLoader {
         }
     }
 
-    public Object createObject(Class clazz) {
-        try {
-            Constructor constructor = clazz.getConstructor();
-            return constructor.newInstance();
-        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            throw new RuntimeException("Need default constructor", e);
-        }
-    }
 }

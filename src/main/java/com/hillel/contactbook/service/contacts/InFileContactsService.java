@@ -1,10 +1,11 @@
-package com.hillel.contactbook.service;
+package com.hillel.contactbook.service.contacts;
 
 
 import com.hillel.contactbook.annotations.PropAnnotation;
 import com.hillel.contactbook.contacts.Contact;
 import com.hillel.contactbook.contacts.ContactWorker;
 import com.hillel.contactbook.dto.contact.ContactResponse;
+import com.hillel.contactbook.service.users.UserService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -20,6 +21,8 @@ public class InFileContactsService implements ContactsService {
 
     @PropAnnotation("file.path")
     private String fileName;
+
+    private UserService userService;
 
 
     @Override
@@ -106,6 +109,16 @@ public class InFileContactsService implements ContactsService {
     @Override
     public boolean hasToken() {
         return true;
+    }
+
+    @Override
+    public UserService getUserService() {
+        return userService;
+    }
+
+    @Override
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
     private void createFile() {

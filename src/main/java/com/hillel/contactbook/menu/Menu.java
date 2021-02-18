@@ -20,6 +20,10 @@ public class Menu {
         while (!isCloseAfter) {
             List<MenuAction> actionsToDisplay = displayActionsName();
             choice = getChoice();
+            if ((choice) > actionsToDisplay.size() || (choice) <= 0) {
+                System.out.println("Вы ввели некорректное значение!");
+                continue;
+            }
             if (actionsToDisplay.get(choice - 1).isVisible()) {
                 actionsToDisplay.get(choice - 1).doAction();
             }
@@ -40,14 +44,13 @@ public class Menu {
     private int getChoice() {
         while (true) {
             System.out.println("Сделайте свой выбор:");
-            String choiceString = null;
             try {
-                choiceString = reader.readLine();
+                String choiceString = reader.readLine();
+                if (validateMenuIndex(choiceString)) {
+                    return Integer.parseInt(choiceString);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
-            }
-            if (validateMenuIndex(choiceString)) {
-                return Integer.parseInt(choiceString);
             }
         }
     }

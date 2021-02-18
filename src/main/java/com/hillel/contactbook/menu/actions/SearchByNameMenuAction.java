@@ -3,11 +3,12 @@ package com.hillel.contactbook.menu.actions;
 
 import com.hillel.contactbook.contacts.Contact;
 import com.hillel.contactbook.menu.MenuAction;
-import com.hillel.contactbook.service.ContactsService;
+import com.hillel.contactbook.service.contacts.ContactsService;
 import lombok.RequiredArgsConstructor;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -18,7 +19,7 @@ public class SearchByNameMenuAction implements MenuAction {
     @Override
     public void doAction() {
         System.out.println("Введите начало имени: ");
-        List<Contact> foundContacts = null;
+        List<Contact> foundContacts = Collections.emptyList();
         try {
             foundContacts = contactsService.searchByName(reader.readLine());
         } catch (IOException e) {
@@ -28,7 +29,7 @@ public class SearchByNameMenuAction implements MenuAction {
             System.out.println("Контакты не найдены.");
         } else {
             System.out.println("Найдены контакты:");
-            foundContacts.forEach(contact -> System.out.println(contact));
+            foundContacts.forEach(System.out::println);
         }
     }
 

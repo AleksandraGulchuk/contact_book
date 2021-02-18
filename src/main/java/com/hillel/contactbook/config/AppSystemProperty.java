@@ -5,12 +5,12 @@ import lombok.Data;
 
 
 @Data
-public class AppProperties {
+public class AppSystemProperty {
 
     @PropAnnotation("contactbook.profile")
     private String profile;
 
-    public String getFilePropName() {
+    public String getProfileName() {
         return "app-" + profile + ".properties";
     }
 

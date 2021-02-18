@@ -6,7 +6,7 @@ import com.hillel.contactbook.contacts.ContactWorker;
 import com.hillel.contactbook.contacts.Type;
 import com.hillel.contactbook.dto.contact.ContactResponse;
 import com.hillel.contactbook.menu.MenuAction;
-import com.hillel.contactbook.service.ContactsService;
+import com.hillel.contactbook.service.contacts.ContactsService;
 import lombok.RequiredArgsConstructor;
 
 import java.io.BufferedReader;

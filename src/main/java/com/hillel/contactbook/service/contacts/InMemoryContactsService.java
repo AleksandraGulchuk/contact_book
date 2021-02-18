@@ -1,8 +1,9 @@
-package com.hillel.contactbook.service;
+package com.hillel.contactbook.service.contacts;
 
 
 import com.hillel.contactbook.contacts.Contact;
 import com.hillel.contactbook.dto.contact.ContactResponse;
+import com.hillel.contactbook.service.users.UserService;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -12,6 +13,7 @@ import java.util.stream.Collectors;
 public class InMemoryContactsService implements ContactsService {
 
     private final List<Contact> contactsList = new ArrayList<>();
+    private UserService userService;
 
     private int newId() {
         return contactsList.stream().map(Contact::getId)
@@ -75,6 +77,16 @@ public class InMemoryContactsService implements ContactsService {
     @Override
     public boolean hasToken() {
         return true;
+    }
+
+    @Override
+    public UserService getUserService() {
+        return userService;
+    }
+
+    @Override
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
 }

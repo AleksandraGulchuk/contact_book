@@ -3,7 +3,7 @@ package com.hillel.contactbook.menu.actions;
 
 import com.hillel.contactbook.contacts.Contact;
 import com.hillel.contactbook.menu.MenuAction;
-import com.hillel.contactbook.service.ContactsService;
+import com.hillel.contactbook.service.contacts.ContactsService;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

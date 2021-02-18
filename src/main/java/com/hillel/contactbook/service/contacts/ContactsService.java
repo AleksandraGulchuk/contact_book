@@ -1,8 +1,9 @@
-package com.hillel.contactbook.service;
+package com.hillel.contactbook.service.contacts;
 
 
 import com.hillel.contactbook.contacts.Contact;
 import com.hillel.contactbook.dto.contact.ContactResponse;
+import com.hillel.contactbook.service.users.UserService;
 
 import java.util.List;
 
@@ -20,5 +21,9 @@ public interface ContactsService {
     List<Contact> searchByValue(String valuePart);
 
     boolean hasToken();
+
+    UserService getUserService();
+
+    void setUserService(UserService userService);
 
 }

@@ -1,7 +1,7 @@
 package com.hillel.contactbook.menu.actions;
 
 import com.hillel.contactbook.menu.MenuAction;
-import com.hillel.contactbook.service.ContactsService;
+import com.hillel.contactbook.service.contacts.ContactsService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
