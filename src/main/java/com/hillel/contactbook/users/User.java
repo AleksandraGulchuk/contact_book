@@ -35,4 +35,8 @@ public class User {
         this.password = password;
         this.dateBorn = dateBorn;
     }
+
+    public User(String login) {
+        this.login = login;
+    }
 }

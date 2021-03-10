@@ -4,6 +4,7 @@ import com.hillel.contactbook.config.ServiceModeProperty;
 import com.hillel.contactbook.menu.Menu;
 import com.hillel.contactbook.service.contacts.ApiContactsService;
 import com.hillel.contactbook.service.contacts.ContactsService;
+import com.hillel.contactbook.service.contacts.DatabaseContactsService;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -13,7 +14,7 @@ public class MenuFactory {
 
     public Menu buildMenu() {
         ContactsService contactsService = ServiceModeProperty.getContactsServiceFromProperties();
-        if (contactsService instanceof ApiContactsService) {
+        if (contactsService instanceof ApiContactsService || contactsService instanceof DatabaseContactsService) {
             return createAuthServiceMenu(new ContactsMenuBuilder(
                     contactsService, new BufferedReader(new InputStreamReader(System.in))));
         } else

@@ -10,7 +10,9 @@ public class FileServiceFactory implements ServiceFactory {
 
     @Override
     public ContactsService createContactsService(String profileName) {
-        return new ConfigLoader().getFileProps(InFileContactsService.class, profileName);
+        ContactsService contactsService = new ConfigLoader().getFileProps(InFileContactsService.class, profileName);
+        contactsService.setUserService(createUserService(profileName));
+        return contactsService;
     }
 
     @Override

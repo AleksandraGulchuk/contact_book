@@ -23,6 +23,7 @@ public class ApiServiceFactory implements ServiceFactory {
                 new ContactWorker(),
                 new JsonHttpRequestFactory());
         configLoader.setFileProps(contactsService, profileName);
+        contactsService.setUserService(createUserService(profileName));
         return contactsService;
     }
 

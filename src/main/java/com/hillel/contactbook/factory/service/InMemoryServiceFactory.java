@@ -9,7 +9,9 @@ public class InMemoryServiceFactory implements ServiceFactory {
 
     @Override
     public ContactsService createContactsService(String profileName) {
-        return new InMemoryContactsService();
+        ContactsService contactsService = new InMemoryContactsService();
+        contactsService.setUserService(createUserService(profileName));
+        return contactsService;
     }
 
     @Override

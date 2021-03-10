@@ -1,10 +1,7 @@
 package com.hillel.contactbook.config;
 
 import com.hillel.contactbook.annotations.PropAnnotation;
-import com.hillel.contactbook.factory.service.ApiServiceFactory;
-import com.hillel.contactbook.factory.service.FileServiceFactory;
-import com.hillel.contactbook.factory.service.InMemoryServiceFactory;
-import com.hillel.contactbook.factory.service.ServiceFactory;
+import com.hillel.contactbook.factory.service.*;
 import com.hillel.contactbook.service.contacts.ContactsService;
 import lombok.Data;
 
@@ -37,11 +34,13 @@ public class ServiceModeProperty {
             case "api":
                 serviceFactory = new ApiServiceFactory();
                 break;
+            case "database":
+                serviceFactory = new DatabaseServiceFactory();
+                break;
             default:
                 throw new IllegalStateException("Unexpected value: " + serviceWorkmode);
         }
         contactsService = serviceFactory.createContactsService(profileName);
-        contactsService.setUserService(serviceFactory.createUserService(profileName));
         return contactsService;
     }
 
